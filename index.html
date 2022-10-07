@@ -19,25 +19,17 @@
             const file = inp.files[0]
             if (file) {
                 var reader = new FileReader();
-                reader.readAsText(file, "UTF-8");
+                reader.readAsBinaryString(file);
                 reader.onload = function (evt) {
                     // 将二进制数据传递给 MapImage 方法解析
-                    console.log(typeof evt.target.result);
                     image = new MapImage(evt.target.result)
                     // 通过 getInitMap 方法获取到图片的 ImageData
-                    let bgImg = image.getInitMap('canvas')
+                    let canv = image.getInitMap('canvas')
                     const outside = document.createElement('div');
-                    const canv = document.createElement('canvas');
                     outside.style.border = "solid";
                     outside.style.display = "inline-block"
-                    canv.width = bgImg.width
-                    canv.height = bgImg.height
-                    const ctx = canv.getContext("2d");
-                    console.log(bgImg);
-                    // ctx.putImageData(bgImg, 0, 0)
-                    
-                    // canv.style.width = "300px"
-                    outside.appendChild(bgImg)
+                    canv.style.width = "300px"
+                    outside.appendChild(canv)
                     document.body.appendChild(outside)
                 }
                 reader.onerror = function (evt) {
@@ -52,7 +44,7 @@
     </script>
     <script src="./js-yaml/dist/js-yaml.min.js"></script>
     <script>
-        
+
     </script>
 
 </body>
