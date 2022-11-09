@@ -166,7 +166,7 @@ PGMFormatter.prototype.getPainting = function (parser, type) {
 			let pos = (row * this._width + col) * 4;
 			dataArr[pos] = d;
 			dataArr[pos + 1] = d;
-			dataArr[pos + 2] = d;
+			dataArr[pos + 2] = 255;
 			dataArr[pos + 3] = 255;
 		}
 	}
